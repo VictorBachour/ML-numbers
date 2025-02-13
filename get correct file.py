@@ -9,6 +9,7 @@ def open_file(window):
         initialdir=os.getcwd(),
         title="Select file",
         filetypes=(("Image files", "*.png;*.jpg;*.jpeg;*.bmp;*.gif"), ("All files", "*.*"))    )
+    print(filepath)
     if not filepath:
         return
 
