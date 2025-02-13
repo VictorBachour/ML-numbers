@@ -2,20 +2,22 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 from PIL import Image
+from Numbers import numbers
 
 def open_file(window):
     filepath = filedialog.askopenfilename(
         initialdir=os.getcwd(),
         title="Select file",
         filetypes=(("Image files", "*.png;*.jpg;*.jpeg;*.bmp;*.gif"), ("All files", "*.*"))    )
+    print(filepath)
     if not filepath:
         return
 
     try:
+        img = Image.open(filepath)
         window.destroy()
-        img = Image.open("filepath")
+        numbers(img)
     except Exception as e:
-
         print("Error opening File", e)
 
 def main():
