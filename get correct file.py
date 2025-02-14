@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
 import os
-from PIL import Image
 from Numbers import numbers
 
 def open_file(window):
