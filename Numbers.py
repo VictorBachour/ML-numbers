@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+import os
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 from tensorflow.keras.models import Sequential
 from keras.datasets import mnist
@@ -10,15 +11,17 @@ from tensorflow.python.keras.utils.np_utils import to_categorical
 
 class numbers:
     def __init__(self, image_path=None):
-         filepath = "C:/Users/vbacho/Downloads/Untitled.png"
-         img = Image.open(filepath)
-         img = self.convert_image(img)
-         self.model = self.train_model()
+         if os.path.exists("my_model.keras"):
+             self.model = tf.keras.models.load_model("my_model.keras")
+         else:
+             self.model = self.train_model()
+         image_path = "C:/Users/vbacho/Downloads/Untitled.png"
+         img = self.convert_image(image_path)
          self.predict_image(img)
 
-    def convert_image(self, image):
-        #image = image.rotate(270)
-        image = image.convert('L')
+    def convert_image(self, image_path):
+        img = Image.open(image_path)
+        image = img.convert('L')
         image = image.resize((28,28))
         image = np.array(image) / 255.0
         image = image.reshape(1,28,28,1)
