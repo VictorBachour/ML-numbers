@@ -4,8 +4,7 @@ import os
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 from tensorflow.keras.models import Sequential
 from keras.datasets import mnist
-from PIL import Image #delete later
-import matplotlib.pyplot as plt
+from PIL import Image
 from tensorflow.python.keras.utils.np_utils import to_categorical
 
 
