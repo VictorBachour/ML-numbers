@@ -10,12 +10,11 @@ from tensorflow.python.keras.utils.np_utils import to_categorical
 
 
 class numbers:
-    def __init__(self, image_path=None):
+    def __init__(self, image_path):
          if os.path.exists("my_model.keras"):
              self.model = tf.keras.models.load_model("my_model.keras")
          else:
              self.model = self.train_model()
-         image_path = "C:/Users/vbacho/Downloads/Untitled.png"
          img = self.convert_image(image_path)
          self.predict_image(img)
 
@@ -63,6 +62,3 @@ class numbers:
         prediction = self.model.predict(image)
         predicted_label = np.argmax(prediction, axis=1)
         print(f"Predicted label: {predicted_label[0]}")
-
-if __name__ == "__main__":
-    numbers()
